@@ -4,5 +4,7 @@ A linux kernel module with several cool functionalities and features
 ### Features
 - Syscall hooking
 - Process hiding
+- File hiding
 - Privilege escalation
-
+- TCP and UDP connection hiding
+- CPU usage forgery
