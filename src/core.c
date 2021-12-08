@@ -6,5 +6,6 @@ int __init rootkiss_init(void) {
 }
 
 void __exit rootkiss_exit(void) {
+	restore_all_syscalls();
 	printk(KERN_INFO "Unloaded Rootkiss");
 }

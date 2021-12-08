@@ -1,6 +1,9 @@
 #ifndef __SYSCALL_HOOK_H
 #define __SYSCALL_HOOK_H
 
+#include <linux/slab.h>
+#include <linux/kallsyms.h>
+
 typedef asmlinkage long (*syscall_t)(const struct pt_regs*);
 
 struct hooked_syscall {

@@ -1,6 +1,5 @@
 #include "headers/syscall_hook.h"
 #include "headers/util.h"
-#include <kallsyms.h>
 
 
 #define MAX_SYSCALL_NUMBER 332
