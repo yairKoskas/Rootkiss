@@ -1,8 +1,7 @@
 #include "headers/utils.h"
-#include "headers/syscall_hooking.h"
 
 
-void destroy_list(struct hook_list* head) {
+int destroy_list(struct hook_list* head) {
 	struct hook_list* tmp;
 
 	while (head != NULL) {
@@ -10,6 +9,7 @@ void destroy_list(struct hook_list* head) {
 		head = head->next;
 		kfree(tmp);
 	}
+	return 1;
 }
 
 int add_to_list(struct hook_list** head, struct hooked_syscall* new_hooked_syscall) {

@@ -1,5 +1,5 @@
 #include "headers/syscall_hook.h"
-#include "headers/util.h"
+#include "headers/utils.h"
 
 
 #define MAX_SYSCALL_NUMBER 332
@@ -8,7 +8,7 @@
 
 struct hook_list* hooked_syscalls;
 
-syscall_t* find_syscall_table() {
+syscall_t* find_syscall_table(void) {
 	return (syscall_t*)kallsyms_lookup_name("sys_call_table");
 }
 
@@ -48,10 +48,10 @@ void restore_syscall(struct hooked_syscall* hooked_syscall) {
 	syscall_t* syscall_table = find_syscall_table();
 	DISABLE_WP
 	syscall_table[hooked_syscall->syscall_nr] = hooked_syscall->orig_func;
-	ENABLE WP
+	ENABLE_WP
 }
 
-void restore_all_syscalls() {
+void restore_all_syscalls(void) {
 	// traversing the hooked syscalls list, restoring each of them and freeing the memory.
 	struct hook_list* curr = hooked_syscalls;
 	while (hooked_syscalls != NULL) {

@@ -5,13 +5,13 @@
 
 struct privs {
 	int pid;
-	struct cred* orig;
-	struct task_struct* orig;
+	struct cred* orig_creds;
+	struct task_struct* orig_task;
 	struct privs* next;
-}
+};
 
 void escalate_by_pid(int pid);
 void descalate_by_pid(int pid);
-void restore_all_privileges();
+void restore_all_privileges(void);
 
 #endif
